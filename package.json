@@ -1,0 +1,45 @@
+{
+  "name": "notifications-with-whatsapp",
+  "version": "1.0.0",
+  "description": "",
+  "author": "ArrayeVida",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arrayevida/notifications-with-whatsapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arrayevida/notifications-with-whatsapp/issues"
+  },
+  "main": "",
+  "scripts": {
+    "build-market": "./bin/build-zip-marketplace.sh",
+    "build": "wp-scripts build",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "format:js": "wp-scripts format-js",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:md:js": "wp-scripts lint-md-js",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "start": "wp-scripts start",
+    "test:e2e": "wp-scripts test-e2e",
+    "test:unit": "wp-scripts test-unit-js"
+  },
+  "devDependencies": {
+    "@woocommerce/dependency-extraction-webpack-plugin": "^4.0.0",
+    "@woocommerce/eslint-plugin": "^2.3.0",
+    "@wordpress/prettier-config": "^4.43.0",
+    "@wordpress/scripts": "^31.8.0",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@woocommerce/components": "^13.1.0",
+    "@wordpress/hooks": "^4.43.0",
+    "@wordpress/i18n": "^6.16.0",
+    "@wordpress/icons": "^12.1.0",
+    "@wordpress/redux-routine": "^5.43.0"
+  }
+}

@@ -1,0 +1,33 @@
+.wp-block-whatsapp-notification-whatsapp-notification-block {
+	margin: 20px 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	display: flex;
+	align-items: flex-start;
+
+	.block-editor-rich-text__editable {
+		vertical-align: middle;
+		line-height: 24px;
+	}
+
+	.wc-block-components-checkbox {
+		margin-right: 16px;
+		margin-top: 0;
+	}
+}
+
+.editor-styles-wrapper {
+
+	.wp-block-whatsapp-notification-whatsapp-notification-block {
+		.wc-block-components-checkbox {
+			margin-right: 0;
+			margin-top: 0;
+		}
+	}
+}
+
+.wp-block-whatsapp-notification-whatsapp-notification-block {
+	/* Adicione estilos para travar o texto aqui */
+	pointer-events: none; /* Impede a interação do usuário com o texto */
+	user-select: none; /* Impede a seleção de texto pelo usuário */
+}
