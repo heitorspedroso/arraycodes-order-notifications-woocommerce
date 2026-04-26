@@ -104,7 +104,7 @@ const PageFormTemplateUpdateOrderStatusCustomer = () => {
 	const fetchFeatureFlag = async () => {
 		try {
 			const isEnabled = await apiFetch( {
-				path: '/notifications-with-whatsapp/v1/is-order-details-enabled',
+				path: '/arraycodes-order-notifications-woocommerce/v1/is-order-details-enabled',
 			} );
 			setShowStatusOrder( isEnabled === true );
 		} catch ( error ) {
@@ -319,7 +319,7 @@ const PageFormTemplateUpdateOrderStatusCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-order-status-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-order-status-customer',
 				fetchOptions
 			);
 
@@ -405,7 +405,7 @@ const PageFormTemplateUpdateOrderStatusCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-order-status-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-order-status-customer',
 				fetchOptions
 			);
 
@@ -491,7 +491,7 @@ const PageFormTemplateUpdateOrderStatusCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-order-status-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-order-status-customer',
 				fetchOptions
 			);
 
@@ -540,7 +540,7 @@ const PageFormTemplateUpdateOrderStatusCustomer = () => {
 		try {
 			const messages = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-status-order',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-status-order',
 			} );
 			if ( messages.result ) {
 				setStatusOrder( messages.result );

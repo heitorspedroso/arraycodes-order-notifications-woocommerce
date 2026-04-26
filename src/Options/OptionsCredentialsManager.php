@@ -41,12 +41,21 @@ if ( ! class_exists( 'OptionsCredentialsManager' ) ) :
 
 			$keys_to_keep = array(
 				'whatsapp_api_account_id',
+				'whatsapp_api_app_secret',
 				'whatsapp_api_log',
 				'whatsapp_api_phone_number',
 				'whatsapp_api_phone_number_to',
 				'whatsapp_api_token'
 			);
 			return array_intersect_key($options_whatsapp_settings_credentials, array_flip($keys_to_keep));
+		}
+
+		/**
+		 * Get_app_secret.
+		 */
+		public function get_app_secret(): string {
+			$options = get_option( 'arraycodes_on_fields_free', array() );
+			return isset( $options['whatsapp_api_app_secret'] ) ? (string) $options['whatsapp_api_app_secret'] : '';
 		}
 	}
 endif;

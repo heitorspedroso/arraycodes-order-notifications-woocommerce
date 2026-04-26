@@ -171,7 +171,7 @@ const PageFormTemplateAbandonedCartCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-abandoned-cart-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-abandoned-cart-customer',
 				fetchOptions
 			);
 
@@ -240,7 +240,7 @@ const PageFormTemplateAbandonedCartCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-abandoned-cart-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-abandoned-cart-customer',
 				fetchOptions
 			);
 
@@ -309,7 +309,7 @@ const PageFormTemplateAbandonedCartCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-abandoned-cart-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-abandoned-cart-customer',
 				fetchOptions
 			);
 

@@ -79,7 +79,7 @@ final class RegisterRoutes {
 
 		$messagesEndpoints = new MessagesEndpoints();
 
-		register_rest_route('notifications-with-whatsapp/v1', '/new-order-customer', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/new-order-customer', array(
 			'methods' => 'POST',
 			'callback' => array( $orderCustomerInternalEndpoints, 'new_order' ),
 			'permission_callback' => function () {
@@ -87,7 +87,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/update-order-customer', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/update-order-customer', array(
 			'methods' => 'POST',
 			'callback' => array( $orderCustomerInternalEndpoints, 'update_order' ),
 			'permission_callback' => function () {
@@ -95,7 +95,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-order-customer', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-order-customer', array(
 			'methods' => 'GET',
 			'callback' => array( $orderCustomerInternalEndpoints, 'get_order' ),
 			'permission_callback' => function () {
@@ -103,7 +103,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/delete-order-customer', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/delete-order-customer', array(
 			'methods' => 'POST',
 			'callback' => array( $orderCustomerInternalEndpoints, 'delete_order' ),
 			'permission_callback' => function () {
@@ -112,7 +112,7 @@ final class RegisterRoutes {
 		));
 
 
-		register_rest_route('notifications-with-whatsapp/v1', '/new-order-seller', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/new-order-seller', array(
 			'methods' => 'POST',
 			'callback' => array( $orderSellerInternalEndpoints, 'new_order' ),
 			'permission_callback' => function () {
@@ -120,7 +120,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/update-order-seller', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/update-order-seller', array(
 			'methods' => 'POST',
 			'callback' => array( $orderSellerInternalEndpoints, 'update_order' ),
 			'permission_callback' => function () {
@@ -128,7 +128,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-order-seller', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-order-seller', array(
 			'methods' => 'GET',
 			'callback' => array( $orderSellerInternalEndpoints, 'get_order' ),
 			'permission_callback' => function () {
@@ -136,7 +136,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/delete-order-seller', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/delete-order-seller', array(
 			'methods' => 'POST',
 			'callback' => array( $orderSellerInternalEndpoints, 'delete_order' ),
 			'permission_callback' => function () {
@@ -144,19 +144,19 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/webhook', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/webhook', array(
 			'methods' => 'GET',
 			'callback' => array( $webhookInternalEndpoints, 'check_webhook' ),
-			'permission_callback' => $this->check_public_permission()
+			'permission_callback' => '__return_true'
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/webhook', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/webhook', array(
 			'methods' => 'POST',
 			'callback' => array( $webhookInternalEndpoints, 'action_webhook' ),
-			'permission_callback' => $this->check_public_permission()
+			'permission_callback' => '__return_true'
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-webhook-callback-url', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-webhook-callback-url', array(
 			'methods' => 'GET',
 			'callback' => array( $webhookInternalEndpoints, 'get_webhook_callback_url' ),
 			'permission_callback' => function () {
@@ -164,7 +164,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-messages', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-messages', array(
 			'methods' => 'GET',
 			'callback' => array( $messagesEndpoints, 'get_messages' ),
 			'permission_callback' => function () {
@@ -172,7 +172,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-messages-by-id', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-messages-by-id', array(
 			'methods' => 'GET',
 			'callback' => array( $messagesEndpoints, 'get_messages_by_id' ),
 			'permission_callback' => function () {
@@ -180,7 +180,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-new-messages', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-new-messages', array(
 			'methods' => 'GET',
 			'callback' => array( $messagesEndpoints, 'get_new_messages' ),
 			'permission_callback' => function () {
@@ -188,7 +188,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/get-status-order', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/get-status-order', array(
 			'methods' => 'GET',
 			'callback' => array( $messagesEndpoints, 'get_status_order' ),
 			'permission_callback' => function () {
@@ -196,7 +196,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/new-response-message', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/new-response-message', array(
 			'methods' => 'POST',
 			'callback' => array( $responseMessageInit, 'new_response_message' ),
 			'permission_callback' => function () {
@@ -204,7 +204,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/debug-token', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/debug-token', array(
 			'methods' => 'GET',
 			'callback' => array( $debugInternalEndpoints, 'debug_token' ),
 			'permission_callback' => function () {
@@ -212,7 +212,7 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route('notifications-with-whatsapp/v1', '/debug-waba-id', array(
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/debug-waba-id', array(
 			'methods' => 'GET',
 			'callback' => array( $debugInternalEndpoints, 'debug_waba_id' ),
 			'permission_callback' => function () {
@@ -220,13 +220,14 @@ final class RegisterRoutes {
 			}
 		));
 
-		register_rest_route( 'notifications-with-whatsapp/v1', '/is-order-details-enabled', [
-			'methods'  => 'GET',
-			'callback' => function () {
-				return rest_ensure_response( defined( 'WHATSAPP_ORDER_DETAILS_ENABLED' ) && WHATSAPP_ORDER_DETAILS_ENABLED );
-			},
-			'permission_callback' => $this->check_public_permission()
-		] );
+		register_rest_route('arraycodes-order-notifications-woocommerce/v1', '/debug-app-secret', array(
+			'methods' => 'GET',
+			'callback' => array( $debugInternalEndpoints, 'debug_app_secret' ),
+			'permission_callback' => function () {
+				return current_user_can( 'edit_others_posts' );
+			}
+		));
+
 	}
 
 	/**

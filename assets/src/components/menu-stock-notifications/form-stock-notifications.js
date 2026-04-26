@@ -148,7 +148,7 @@ const PageFormStockNotifications = () => {
 		setIsSenting( true );
 
 		apiFetch( {
-			path: '/notifications-with-whatsapp/v1/send-stock-notification',
+			path: '/arraycodes-order-notifications-woocommerce/v1/send-stock-notification',
 			method: 'POST',
 			data: {
 				requests: selectedItems,

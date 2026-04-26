@@ -34,7 +34,7 @@ This plugin requires a **Meta (Facebook) Developer account** and access to the *
 * **Access Token** — a permanent system user token with `whatsapp_business_messaging` and `whatsapp_business_management` permissions
 * **Phone Number ID** — the ID of the WhatsApp phone number registered in your Meta App
 * **WhatsApp Business Account ID** — your Meta Business Account ID
-* **App ID** and **App Secret** — from your Meta App dashboard
+* **App Secret** — found in your Meta App dashboard under **App Settings → Basic**. Required to verify incoming webhook payloads.
 
 To obtain these credentials, follow the official Meta guide: https://developers.facebook.com/docs/whatsapp/cloud-api/get-started
 
@@ -43,7 +43,7 @@ To obtain these credentials, follow the official Meta guide: https://developers.
 1. Upload the plugin folder to the `/wp-content/plugins/` directory, or install directly through the WordPress plugin screen.
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Go to **WooCommerce → ArrayCodes Order Notifications** to begin setup.
-4. On the **Connection** tab, enter the Meta App credentials listed above.
+4. On the **Connection** tab, enter your Meta App credentials, including the **App Secret** (App Settings → Basic in your Meta App dashboard).
 5. Copy the **Webhook URL** shown in the plugin and register it in your Meta App under WhatsApp → Configuration → Webhook.
 6. Save your settings and use the built-in **debug tools** to verify that the connection is working.
 
@@ -69,6 +69,20 @@ This plugin connects to the **Meta (Facebook) Graph API** to deliver WhatsApp Bu
 * Meta Platform Terms: https://developers.facebook.com/terms/
 * WhatsApp Business Policy: https://www.whatsapp.com/legal/business-policy/
 * Meta Privacy Policy: https://www.facebook.com/privacy/policy/
+
+== Development ==
+
+The unminified JavaScript and CSS source files are included in the plugin under the `assets/src/` directory.
+
+= Building from source =
+
+Requirements: Node.js 20+ and npm 10+.
+
+1. Navigate to the plugin directory.
+2. Run `npm install` to install dependencies.
+3. Run `npm run build` to compile assets into `assets/build/`.
+
+For development with live reloading, use `npm run start` instead of `npm run build`.
 
 == Changelog ==
 = 1.0.0 - 2026-04-10 =

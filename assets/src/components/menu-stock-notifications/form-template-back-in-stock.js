@@ -158,7 +158,7 @@ const PageFormTemplateBackInStockCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-back-in-stock-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-back-in-stock-customer',
 				fetchOptions
 			);
 
@@ -227,7 +227,7 @@ const PageFormTemplateBackInStockCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-back-in-stock-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-back-in-stock-customer',
 				fetchOptions
 			);
 
@@ -296,7 +296,7 @@ const PageFormTemplateBackInStockCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-back-in-stock-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-back-in-stock-customer',
 				fetchOptions
 			);
 

@@ -57,8 +57,8 @@ if ( ! class_exists( 'WebhookInternalEndpoints' ) ) :
 			if (!empty($data) && isset($data['hub_mode']) && isset($data['hub_verify_token']) && isset($data['hub_challenge'])) {
 
 				$site_url             = get_bloginfo('url');
-				$site_url             = $site_url . '/wp-json/notifications-with-whatsapp/v1/webhook';
-				$webhook_verify_token = md5($site_url);
+				$site_url             = $site_url . '/wp-json/arraycodes-order-notifications-woocommerce/v1/webhook';
+				$webhook_verify_token = wp_hash( $site_url );
 
 				$mode      = $data['hub_mode'];
 				$token     = $data['hub_verify_token'];
@@ -86,6 +86,22 @@ if ( ! class_exists( 'WebhookInternalEndpoints' ) ) :
 		 */
 		public function action_webhook( $request): \WP_REST_Response {
 
+			$app_secret = $this->apiFunctions->get_app_secret();
+
+			if ( empty( $app_secret ) ) {
+				$this->logger->save_log_api( $this->apiFunctions->get_class_type() . ' - Webhook rejected: App Secret not configured', array() );
+				return new \WP_REST_Response( array( 'message' => false ), 403 );
+			}
+
+			$signature_header = $request->get_header( 'x-hub-signature-256' );
+			$raw_body         = $request->get_body();
+			$expected         = 'sha256=' . hash_hmac( 'sha256', $raw_body, $app_secret );
+
+			if ( empty( $signature_header ) || ! hash_equals( $expected, $signature_header ) ) {
+				$this->logger->save_log_api( $this->apiFunctions->get_class_type() . ' - Invalid webhook signature', array( 'signature_mismatch' ) );
+				return new \WP_REST_Response( array( 'message' => false ), 403 );
+			}
+
 			$data = $request->get_json_params();
 
 			$facebookResponse = new WhatsAppResponseHandler(wp_json_encode($data));
@@ -104,8 +120,8 @@ if ( ! class_exists( 'WebhookInternalEndpoints' ) ) :
 		public function get_webhook_callback_url(): \WP_REST_Response {
 
 			$site_url = get_bloginfo('url');
-			$site_url = $site_url . '/wp-json/notifications-with-whatsapp/v1/webhook';
-			$token    = md5($site_url);
+			$site_url = $site_url . '/wp-json/arraycodes-order-notifications-woocommerce/v1/webhook';
+			$token    = wp_hash( $site_url );
 
 			$return = array(
 				'whatsapp_api_webhook_callback_url' => $site_url,

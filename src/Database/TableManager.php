@@ -184,9 +184,9 @@ final class TableManager {
 	public static function clear_tables() {
 		global $wpdb;
 
-		$wpdb->query( 'TRUNCATE TABLE woo_notifications_with_whatsapp_users' );
-		$wpdb->query( 'TRUNCATE TABLE woo_notifications_with_whatsapp_messages' );
-		$wpdb->query( 'TRUNCATE TABLE woo_notifications_with_whatsapp_conversations' );
+		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}notifications_with_whatsapp_users" );
+		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}notifications_with_whatsapp_messages" );
+		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}notifications_with_whatsapp_conversations" );
 	}
 
 }

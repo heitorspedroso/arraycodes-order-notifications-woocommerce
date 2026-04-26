@@ -26,7 +26,7 @@ const MyPanel = ( { onNavItemChange, activeNavItem } ) => {
 		try {
 			const messages = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-new-messages',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-new-messages',
 			} );
 			if ( messages.result ) {
 				setNewMessage( messages.result );
@@ -40,7 +40,7 @@ const MyPanel = ( { onNavItemChange, activeNavItem } ) => {
 	const fetchFeatureFlag = async () => {
 		try {
 			const isEnabled = await apiFetch( {
-				path: '/notifications-with-whatsapp/v1/is-order-details-enabled',
+				path: '/arraycodes-order-notifications-woocommerce/v1/is-order-details-enabled',
 			} );
 			setShowOrderDetails( isEnabled === true );
 		} catch ( error ) {

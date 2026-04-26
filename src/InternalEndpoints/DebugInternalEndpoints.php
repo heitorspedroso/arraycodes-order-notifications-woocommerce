@@ -77,5 +77,21 @@ if ( ! class_exists( 'DebugInternalEndpoints' ) ) :
 			return new \WP_REST_Response(array('message' => false, 'data'=> $return_message));
 		}
 
+	/**
+	 *  ApiEndpoints
+	 *
+	 */
+	public function debug_app_secret(): \WP_REST_Response {
+
+		$result = $this->apiFunctions->debug_app_secret_api();
+		$body   = json_decode( $result['message'] );
+
+		if ( 200 === $result['code'] && isset( $body->id ) ) {
+			return new \WP_REST_Response( array( 'message' => true, 'data' => $result ) );
+		}
+
+		return new \WP_REST_Response( array( 'message' => false, 'data' => $result ) );
+	}
+
 	}
 endif;

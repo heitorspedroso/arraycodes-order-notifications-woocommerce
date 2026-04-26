@@ -122,4 +122,57 @@ class DebugFacebookCommunicator {
 
 	}
 
+	/**
+	 * Validate the App Secret by using it as part of an app access token.
+	 */
+	public function debug_app_secret_api(): array {
+
+		$options = $this->optionsCredentialsManager->get_options_whatsapp_settings_credentials();
+
+		if ( empty( $options['whatsapp_api_token'] ) || empty( $options['whatsapp_api_app_secret'] ) ) {
+			return array( 'message' => 'Fields are false', 'code' => 403 );
+		}
+
+		$debug_response = wp_remote_get(
+			'https://graph.facebook.com/v22.0/debug_token?input_token=' . rawurlencode( $options['whatsapp_api_token'] ),
+			array(
+				'headers' => array(
+					'Authorization' => 'Bearer ' . $options['whatsapp_api_token'],
+					'Content-Type'  => 'application/json',
+				),
+				'timeout' => 9999,
+			)
+		);
+
+		if ( is_wp_error( $debug_response ) ) {
+			$code = $debug_response->get_error_code();
+			return array( 'message' => $debug_response->get_error_message(), 'code' => 'http_request_failed' === $code ? 408 : $code );
+		}
+
+		$debug_body = json_decode( wp_remote_retrieve_body( $debug_response ) );
+
+		if ( empty( $debug_body->data->app_id ) ) {
+			return array( 'message' => 'Could not retrieve app_id from token', 'code' => 400 );
+		}
+
+		$app_id           = $debug_body->data->app_id;
+		$app_access_token = $app_id . '|' . $options['whatsapp_api_app_secret'];
+
+		$validate_response = wp_remote_get(
+			'https://graph.facebook.com/v22.0/' . rawurlencode( $app_id ) . '?fields=id,name&access_token=' . rawurlencode( $app_access_token ),
+			array( 'timeout' => 9999 )
+		);
+
+		if ( is_wp_error( $validate_response ) ) {
+			$code = $validate_response->get_error_code();
+			return array( 'message' => $validate_response->get_error_message(), 'code' => 'http_request_failed' === $code ? 408 : $code );
+		}
+
+		return array(
+			'message' => wp_remote_retrieve_body( $validate_response ),
+			'code'    => wp_remote_retrieve_response_code( $validate_response ),
+		);
+
+	}
+
 }

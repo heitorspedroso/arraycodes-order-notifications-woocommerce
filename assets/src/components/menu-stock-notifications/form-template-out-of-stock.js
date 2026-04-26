@@ -158,7 +158,7 @@ const PageFormTemplateOutOfStockCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-out-of-stock-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-out-of-stock-customer',
 				fetchOptions
 			);
 
@@ -227,7 +227,7 @@ const PageFormTemplateOutOfStockCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-out-of-stock-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-out-of-stock-customer',
 				fetchOptions
 			);
 
@@ -296,7 +296,7 @@ const PageFormTemplateOutOfStockCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-out-of-stock-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-out-of-stock-customer',
 				fetchOptions
 			);
 

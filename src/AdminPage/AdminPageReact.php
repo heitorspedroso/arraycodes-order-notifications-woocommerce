@@ -130,27 +130,40 @@ class AdminPageReact {
 			return array();
 		}
 
-		$string_fields = array(
+		$text_fields = array(
 			'whatsapp_api_token', 'whatsapp_api_phone_number', 'whatsapp_api_account_id',
-			'whatsapp_api_phone_number_to', 'whatsapp_api_webhook_callback_url',
-			'whatsapp_api_webhook_token', 'whatsapp_template_new_order_id',
-			'whatsapp_template_new_order_status', 'whatsapp_template_new_order_category',
-			'whatsapp_template_new_order_name', 'whatsapp_template_new_order_language',
-			'whatsapp_template_new_order_header', 'whatsapp_template_new_order_footer',
-			'whatsapp_template_new_order_body', 'whatsapp_template_new_order_customer_id',
+			'whatsapp_api_phone_number_to', 'whatsapp_api_webhook_token', 'whatsapp_api_app_secret',
+			'whatsapp_template_new_order_id', 'whatsapp_template_new_order_status',
+			'whatsapp_template_new_order_category', 'whatsapp_template_new_order_name',
+			'whatsapp_template_new_order_language', 'whatsapp_template_new_order_customer_id',
 			'whatsapp_template_new_order_customer_status', 'whatsapp_template_new_order_customer_category',
 			'whatsapp_template_new_order_customer_name', 'whatsapp_template_new_order_customer_language',
-			'whatsapp_template_new_order_customer_header', 'whatsapp_template_new_order_customer_header_type',
+			'whatsapp_template_new_order_customer_header_type',
+		);
+
+		$textarea_fields = array(
+			'whatsapp_template_new_order_header', 'whatsapp_template_new_order_footer',
+			'whatsapp_template_new_order_body', 'whatsapp_template_new_order_customer_header',
 			'whatsapp_template_new_order_customer_footer', 'whatsapp_template_new_order_customer_body',
 			'whatsapp_auto_reply',
 		);
 
 		$sanitized = array();
 
-		foreach ( $string_fields as $field ) {
+		foreach ( $text_fields as $field ) {
 			if ( isset( $input[ $field ] ) ) {
 				$sanitized[ $field ] = sanitize_text_field( $input[ $field ] );
 			}
+		}
+
+		foreach ( $textarea_fields as $field ) {
+			if ( isset( $input[ $field ] ) ) {
+				$sanitized[ $field ] = sanitize_textarea_field( $input[ $field ] );
+			}
+		}
+
+		if ( isset( $input['whatsapp_api_webhook_callback_url'] ) ) {
+			$sanitized['whatsapp_api_webhook_callback_url'] = esc_url_raw( $input['whatsapp_api_webhook_callback_url'] );
 		}
 
 		$sanitized['whatsapp_api_log']                 = isset( $input['whatsapp_api_log'] ) ? (bool) $input['whatsapp_api_log'] : false;
@@ -188,6 +201,7 @@ class AdminPageReact {
 							'whatsapp_api_checked_input' => false,
 							'whatsapp_api_webhook_callback_url' => '',
 							'whatsapp_api_webhook_token' => '',
+							'whatsapp_api_app_secret' => '',
 							'whatsapp_template_new_order_id' => '',
 							'whatsapp_template_new_order_status' => '',
 							'whatsapp_template_new_order_category' => '',
@@ -233,6 +247,9 @@ class AdminPageReact {
 								'type' => 'string',
 							),
 							'whatsapp_api_webhook_token' => array(
+								'type' => 'string',
+							),
+							'whatsapp_api_app_secret' => array(
 								'type' => 'string',
 							),
 							'whatsapp_template_new_order_id' => array(

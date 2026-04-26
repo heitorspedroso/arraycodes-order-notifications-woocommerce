@@ -114,7 +114,7 @@ const PageFormTemplateUnpaidOrderCustomer = () => {
 		try {
 			const messages = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-status-order',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-status-order',
 			} );
 			if ( messages.result ) {
 				setStatusOrder( messages.result );
@@ -198,7 +198,7 @@ const PageFormTemplateUnpaidOrderCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-unpaid-order-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-unpaid-order-customer',
 				fetchOptions
 			);
 
@@ -267,7 +267,7 @@ const PageFormTemplateUnpaidOrderCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-unpaid-order-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-unpaid-order-customer',
 				fetchOptions
 			);
 
@@ -336,7 +336,7 @@ const PageFormTemplateUnpaidOrderCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-unpaid-order-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-unpaid-order-customer',
 				fetchOptions
 			);
 

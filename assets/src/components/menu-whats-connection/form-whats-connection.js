@@ -25,6 +25,7 @@ const PageFormWhatsConnection = () => {
 	const [ isSaving, setIsSaving ] = useState( false );
 	const [ isTokenisValid, setIsTokenisValid ] = useState( null );
 	const [ isWabaIdisValid, setIsWabaIdisValid ] = useState( null );
+	const [ isAppSecretValid, setIsAppSecretValid ] = useState( null );
 	const [ phoneNumberId, setPhoneNumberId ] = useState( '' );
 
 	const fieldsFromStore = useSelect(
@@ -44,6 +45,7 @@ const PageFormWhatsConnection = () => {
 	const [ fields, setFields ] = useState( {
 		whatsapp_api_log: '',
 		whatsapp_api_token: '',
+		whatsapp_api_app_secret: '',
 		whatsapp_api_phone_number: '',
 		whatsapp_api_account_id: '',
 		whatsapp_api_phone_number_to: '',
@@ -60,6 +62,9 @@ const PageFormWhatsConnection = () => {
 		if ( fieldKey === 'whatsapp_api_phone_number' ) {
 			setPhoneNumberId( '' );
 		}
+		if ( fieldKey === 'whatsapp_api_app_secret' ) {
+			setIsAppSecretValid( null );
+		}
 
 		setFields( ( prevFields ) => ( {
 			...prevFields,
@@ -72,7 +77,7 @@ const PageFormWhatsConnection = () => {
 			// eslint-disable-next-line @typescript-eslint/no-shadow
 			const isTokenisValid = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/debug-token',
+				path: '/arraycodes-order-notifications-woocommerce/v1/debug-token',
 			} );
 			setIsTokenisValid( isTokenisValid.message );
 		} catch ( error ) {
@@ -86,13 +91,26 @@ const PageFormWhatsConnection = () => {
 			// eslint-disable-next-line @typescript-eslint/no-shadow
 			const isWabaIdisValid = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/debug-waba-id',
+				path: '/arraycodes-order-notifications-woocommerce/v1/debug-waba-id',
 			} );
 			setIsWabaIdisValid( isWabaIdisValid.message );
 			setPhoneNumberId( isWabaIdisValid.data.id );
 		} catch ( error ) {
 			//console.error( 'Erro ao buscar o Webhook:', error );
 			setIsWabaIdisValid( false );
+		}
+	}, [] );
+
+	const getAppSecretIsValid = useCallback( async () => {
+		try {
+			// eslint-disable-next-line @typescript-eslint/no-shadow
+			const isAppSecretValid = await apiFetch( {
+				method: 'GET',
+				path: '/arraycodes-order-notifications-woocommerce/v1/debug-app-secret',
+			} );
+			setIsAppSecretValid( isAppSecretValid.message );
+		} catch ( error ) {
+			setIsAppSecretValid( false );
 		}
 	}, [] );
 
@@ -110,6 +128,7 @@ const PageFormWhatsConnection = () => {
 						fields.whatsapp_api_phone_number_to,
 					whatsapp_api_checked_input:
 						fields.whatsapp_api_checked_input,
+					whatsapp_api_app_secret: fields.whatsapp_api_app_secret,
 				},
 				fieldsFromStore
 			);
@@ -139,8 +158,12 @@ const PageFormWhatsConnection = () => {
 			if ( fieldsFromStore.whatsapp_api_account_id !== '' ) {
 				getWabaIdisValid();
 			}
+
+			if ( fieldsFromStore.whatsapp_api_app_secret !== '' ) {
+				getAppSecretIsValid();
+			}
 		}
-	}, [ fieldsFromStore, getTokenisValid, getWabaIdisValid ] );
+	}, [ fieldsFromStore, getTokenisValid, getWabaIdisValid, getAppSecretIsValid ] );
 
 	const whatsappApiLogHelpText = (
 		<>
@@ -263,6 +286,65 @@ const PageFormWhatsConnection = () => {
 								<>
 									{ __(
 										'Enter your API access token from WhatsApp',
+										'arraycodes-order-notifications-woocommerce'
+									) }
+								</>
+							)
+						}
+					/>
+					<TextControl
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+						type="password"
+						label={ __(
+							'App Secret',
+							'arraycodes-order-notifications-woocommerce'
+						) }
+						value={ fields.whatsapp_api_app_secret }
+						onChange={ ( newValue ) =>
+							handleChange( newValue, 'whatsapp_api_app_secret' )
+						}
+						className={
+							// eslint-disable-next-line no-nested-ternary
+							isAppSecretValid === false
+								? 'invalid'
+								: isAppSecretValid === true
+								? 'valid'
+								: ''
+						}
+						help={
+							// eslint-disable-next-line no-nested-ternary
+							isAppSecretValid === false ? (
+								<>
+									{ __(
+										'Invalid App Secret',
+										'arraycodes-order-notifications-woocommerce'
+									) }
+									<br />
+									<span>
+										{ __(
+											'Check if the App Secret was entered correctly.',
+											'arraycodes-order-notifications-woocommerce'
+										) }{ ' ' }
+										<ExternalLink href="https://developers.facebook.com/apps/">
+											{ __(
+												'Open Meta Developers',
+												'arraycodes-order-notifications-woocommerce'
+											) }
+										</ExternalLink>
+									</span>
+								</>
+							) : isAppSecretValid === true ? (
+								<>
+									{ __(
+										'Valid App Secret',
+										'arraycodes-order-notifications-woocommerce'
+									) }
+								</>
+							) : (
+								<>
+									{ __(
+										'Your Meta App Secret (App Settings → Basic). Required for webhook signature validation.',
 										'arraycodes-order-notifications-woocommerce'
 									) }
 								</>

@@ -105,5 +105,12 @@ if ( ! class_exists( 'WebhookFacebookCommunicator' ) ) :
 
 		}
 
+		/**
+		 * Get_app_secret.
+		 */
+		public function get_app_secret(): string {
+			return $this->optionsCredentialsManager->get_app_secret();
+		}
+
 	}
 endif;

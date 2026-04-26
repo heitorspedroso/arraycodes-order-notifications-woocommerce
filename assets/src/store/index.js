@@ -383,7 +383,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const orderSeller = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-order-seller',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-order-seller',
 			} );
 			// console.log( 'resolvers getOrderSeller', orderSeller );
 			if (
@@ -398,7 +398,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const orderCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-order-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-order-customer',
 			} );
 			// console.log( 'resolvers getOrderCustomer', orderCustomer );
 			if (
@@ -413,7 +413,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const orderStatusCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-order-status-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-order-status-customer',
 			} );
 			// console.log( 'resolvers getOrderStatusCustomer', orderStatusCustomer );
 			if ( orderStatusCustomer.message === 'ok' ) {
@@ -425,7 +425,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const abandonedCartCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-abandoned-cart-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-abandoned-cart-customer',
 			} );
 			// console.log( 'resolvers getAbandonedCart', abandonedCartCustomer );
 			if (
@@ -442,7 +442,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const outOfStockCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-out-of-stock-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-out-of-stock-customer',
 			} );
 			// console.log( 'resolvers getOutOfStock', outOfStockCustomer );
 			if (
@@ -457,7 +457,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const backInStockCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-back-in-stock-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-back-in-stock-customer',
 			} );
 			// console.log( 'resolvers getBackInStock', backInStockCustomer );
 			if (
@@ -472,7 +472,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const reviewNotificationCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-review-notification-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-review-notification-customer',
 			} );
 			// console.log( 'resolvers getReviewNotification', reviewNotificationCustomer );
 			if (
@@ -489,7 +489,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const unpaidOrderCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-unpaid-order-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-unpaid-order-customer',
 			} );
 			// console.log( 'resolvers getUnpaidOrder', unpaidOrderCustomer );
 			if (
@@ -504,7 +504,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const orderDetailsCustomer = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-order-details-customer',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-order-details-customer',
 			} );
 			// console.log( 'resolvers getOrderDetailsCustomer', orderDetailsCustomer );
 			if (
@@ -519,7 +519,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const messages = await apiFetch( {
 				method: 'GET',
-				path: `/notifications-with-whatsapp/v1/get-messages?page=${ page }&per_page=${ perPage }`,
+				path: `/arraycodes-order-notifications-woocommerce/v1/get-messages?page=${ page }&per_page=${ perPage }`,
 			} );
 			// console.log( 'resolvers getMessages', messages.result );
 			if ( messages.result.messages ) {
@@ -535,7 +535,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const messages = await apiFetch( {
 				method: 'GET',
-				path: `/notifications-with-whatsapp/v1/get-messages-by-id?wa_id=${ waId }`,
+				path: `/arraycodes-order-notifications-woocommerce/v1/get-messages-by-id?wa_id=${ waId }`,
 			} );
 			// console.log( 'resolvers getMessagesById', messages.result );
 			if ( messages.result ) {
@@ -549,7 +549,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const products_notify_me = await apiFetch( {
 				method: 'GET',
-				path: `/notifications-with-whatsapp/v1/get-products-notify-me?page=${ page }&per_page=${ perPage }`,
+				path: `/arraycodes-order-notifications-woocommerce/v1/get-products-notify-me?page=${ page }&per_page=${ perPage }`,
 			} );
 			// console.log( 'resolvers getProductsNotifyMe', products_notify_me.result );
 			if ( products_notify_me.result.products_notify_me ) {
@@ -566,7 +566,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const response = await apiFetch( {
 				method: 'GET',
-				path: `/notifications-with-whatsapp/v1/get-products-notify-me-by-id
+				path: `/arraycodes-order-notifications-woocommerce/v1/get-products-notify-me-by-id
 				?product_id=${ productId }
 				&page=${ page }
 				&per_page=${ perPage }`,
@@ -587,7 +587,7 @@ const resolvers = {
 		return async ( { dispatch } ) => {
 			const webhookCallbackUrl = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-webhook-callback-url',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-webhook-callback-url',
 			} );
 			// console.log( 'resolvers getWebhookCallbackUrl', webhookCallbackUrl )
 			if ( webhookCallbackUrl.message === 'ok' ) {

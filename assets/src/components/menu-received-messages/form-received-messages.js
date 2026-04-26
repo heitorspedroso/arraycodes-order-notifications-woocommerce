@@ -172,7 +172,7 @@ const PageFormReceivedMessages = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-response-message',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-response-message',
 				fetchOptions
 			);
 

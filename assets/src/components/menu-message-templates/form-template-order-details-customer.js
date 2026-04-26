@@ -190,7 +190,7 @@ const PageFormTemplateOrderDetailsCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-order-details-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-order-details-customer',
 				fetchOptions
 			);
 
@@ -259,7 +259,7 @@ const PageFormTemplateOrderDetailsCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-order-details-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-order-details-customer',
 				fetchOptions
 			);
 
@@ -328,7 +328,7 @@ const PageFormTemplateOrderDetailsCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-order-details-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-order-details-customer',
 				fetchOptions
 			);
 

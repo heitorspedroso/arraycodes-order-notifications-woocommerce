@@ -113,13 +113,13 @@ const Coupon = () => {
 				editedCouponMessagesFields?.whatsapp_coupon_messages_id_coupon
 			) {
 				await apiFetch( {
-					path: '/notifications-with-whatsapp/v1/update-coupon',
+					path: '/arraycodes-order-notifications-woocommerce/v1/update-coupon',
 					method: 'POST',
 					data: editedCouponMessagesFields,
 				} );
 			} else {
 				const response = await apiFetch( {
-					path: '/notifications-with-whatsapp/v1/create-coupon',
+					path: '/arraycodes-order-notifications-woocommerce/v1/create-coupon',
 					method: 'POST',
 					data: editedCouponMessagesFields,
 				} );
@@ -200,7 +200,7 @@ const Coupon = () => {
 			setCurrentlyDeletingId( couponMessageId );
 
 			await apiFetch( {
-				path: '/notifications-with-whatsapp/v1/delete-coupon',
+				path: '/arraycodes-order-notifications-woocommerce/v1/delete-coupon',
 				method: 'POST',
 				data: { id: idCouponWp },
 			} );

@@ -94,7 +94,7 @@ const PageFormTemplateReviewNotificationCustomer = () => {
 		try {
 			const messages = await apiFetch( {
 				method: 'GET',
-				path: '/notifications-with-whatsapp/v1/get-status-order',
+				path: '/arraycodes-order-notifications-woocommerce/v1/get-status-order',
 			} );
 			if ( messages.result ) {
 				setStatusOrder( messages.result );
@@ -193,7 +193,7 @@ const PageFormTemplateReviewNotificationCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-review-notification-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-review-notification-customer',
 				fetchOptions
 			);
 
@@ -262,7 +262,7 @@ const PageFormTemplateReviewNotificationCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-review-notification-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-review-notification-customer',
 				fetchOptions
 			);
 
@@ -331,7 +331,7 @@ const PageFormTemplateReviewNotificationCustomer = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-review-notification-customer',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-review-notification-customer',
 				fetchOptions
 			);
 

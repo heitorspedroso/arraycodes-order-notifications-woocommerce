@@ -126,14 +126,13 @@ if ( ! class_exists( 'Init' ) ) :
 		 * @return bool
 		 */
 		private function has_valid_requirements() {
-
-			$plugin_path = trailingslashit( WP_PLUGIN_DIR ) . 'woocommerce/woocommerce.php';
-			if ( in_array( $plugin_path, wp_get_active_and_valid_plugins(), true ) ) {
+			$active_plugins = (array) get_option( 'active_plugins', array() );
+			if ( in_array( 'woocommerce/woocommerce.php', $active_plugins, true ) ) {
 				return true;
 			}
 
-			$network_active_plugins = get_site_option('active_sitewide_plugins');
-			if ( ( ! empty($network_active_plugins) && array_key_exists('woocommerce/woocommerce.php', $network_active_plugins) ) ) {
+			$network_active_plugins = get_site_option( 'active_sitewide_plugins' );
+			if ( ! empty( $network_active_plugins ) && array_key_exists( 'woocommerce/woocommerce.php', $network_active_plugins ) ) {
 				return true;
 			}
 

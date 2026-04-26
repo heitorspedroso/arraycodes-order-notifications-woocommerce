@@ -23,7 +23,6 @@ cd "$BUILD_PATH" || exit
 
 #exclusive actions marketplace
 rm -rf $PLUGIN_SLUG/assets/css/
-rm -rf $PLUGIN_SLUG/assets/src/
 
 
 zip -q -r "${PLUGIN_SLUG}.zip" "$PLUGIN_SLUG/"

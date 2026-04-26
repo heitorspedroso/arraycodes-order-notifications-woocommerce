@@ -170,7 +170,7 @@ const PageFormTemplateNewOrder = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/new-order-seller',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/new-order-seller',
 				fetchOptions
 			);
 
@@ -239,7 +239,7 @@ const PageFormTemplateNewOrder = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/update-order-seller',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/update-order-seller',
 				fetchOptions
 			);
 
@@ -308,7 +308,7 @@ const PageFormTemplateNewOrder = () => {
 			};
 
 			const response = await fetch(
-				'/wp-json/notifications-with-whatsapp/v1/delete-order-seller',
+				'/wp-json/arraycodes-order-notifications-woocommerce/v1/delete-order-seller',
 				fetchOptions
 			);
 
