@@ -24,7 +24,7 @@ jobs:
         run: ./bin/build-zip-marketplace.sh
 
       - name: Deploy to WordPress.org SVN
-        uses: 10up/action-wordpress-plugin-deploy@v2.3.0
+        uses: 10up/action-wordpress-plugin-deploy@2.3.0
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
