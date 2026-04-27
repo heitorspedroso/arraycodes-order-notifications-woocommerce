@@ -19,4 +19,5 @@ CLAUDE.md
 .prettienrrc.json
 webpack.config.js
 .php-cs-fixer.cache
+assets/css/
 

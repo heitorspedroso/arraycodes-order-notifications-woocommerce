@@ -1,4 +1,4 @@
-name: Release
+name: Deploy
 
 on:
   push:
@@ -6,12 +6,33 @@ on:
       - 'v*'
 
 jobs:
-  release:
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer
+
+      - name: Build distribution ZIP
+        run: ./bin/build-zip-marketplace.sh
+
+      - name: Deploy to WordPress.org SVN
+        uses: 10up/action-wordpress-org-deploy@v2
+        with:
+          plugin-slug: arraycodes-order-notifications-woocommerce
+          svn-username: ${{ secrets.SVN_USERNAME }}
+          svn-password: ${{ secrets.SVN_PASSWORD }}
+          assets-dir: .wordpress-org
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          files: dist/arraycodes-order-notifications-woocommerce.zip
           generate_release_notes: false
